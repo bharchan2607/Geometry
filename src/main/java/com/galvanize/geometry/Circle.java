@@ -2,6 +2,7 @@ package com.galvanize.geometry;
 
 public class Circle extends Shape {
     private int radius;
+    private Point centerLocation;
 
     public Circle(int radius){
         this.radius = radius;
@@ -28,6 +29,5 @@ public class Circle extends Shape {
     public double getArea() {
         return Math.PI * Math.pow(this.radius,2);
     }
-
 
 }

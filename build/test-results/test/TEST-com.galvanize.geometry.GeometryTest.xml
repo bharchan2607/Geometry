@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.galvanize.geometry.GeometryTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2021-01-25T17:27:01" hostname="LAPTOP-S57OD5Q8" time="0.135">
+<testsuite name="com.galvanize.geometry.GeometryTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2021-01-25T18:25:57" hostname="LAPTOP-S57OD5Q8" time="0.095">
   <properties/>
-  <testcase name="createCirleWithRadius()" classname="com.galvanize.geometry.GeometryTest" time="0.047"/>
-  <testcase name="getColorOfShape()" classname="com.galvanize.geometry.GeometryTest" time="0.013"/>
-  <testcase name="createCirleWithoutRadius()" classname="com.galvanize.geometry.GeometryTest" time="0.002"/>
-  <testcase name="getPerimeterOfShape()" classname="com.galvanize.geometry.GeometryTest" time="0.002"/>
-  <testcase name="getAreaOfShape()" classname="com.galvanize.geometry.GeometryTest" time="0.004"/>
-  <testcase name="getLengthAndWidth_rectangle()" classname="com.galvanize.geometry.GeometryTest" time="0.01"/>
-  <testcase name="changeLengthAndWidth_rectangle()" classname="com.galvanize.geometry.GeometryTest" time="0.003"/>
-  <testcase name="changeRadiusOfACircle()" classname="com.galvanize.geometry.GeometryTest" time="0.017"/>
-  <testcase name="getLengthAndWidth_returnOne_rectangle()" classname="com.galvanize.geometry.GeometryTest" time="0.003"/>
+  <testcase name="createCirleWithRadius()" classname="com.galvanize.geometry.GeometryTest" time="0.041"/>
+  <testcase name="getColorOfShape()" classname="com.galvanize.geometry.GeometryTest" time="0.004"/>
+  <testcase name="createCirleWithoutRadius()" classname="com.galvanize.geometry.GeometryTest" time="0.001"/>
+  <testcase name="getPerimeterOfShape()" classname="com.galvanize.geometry.GeometryTest" time="0.005"/>
+  <testcase name="placeShapeOnCartesianPlane()" classname="com.galvanize.geometry.GeometryTest" time="0.003"/>
+  <testcase name="createPoint()" classname="com.galvanize.geometry.GeometryTest" time="0.001"/>
+  <testcase name="retrieveCenterLocationOfShape()" classname="com.galvanize.geometry.GeometryTest" time="0.002"/>
+  <testcase name="getAreaOfShape()" classname="com.galvanize.geometry.GeometryTest" time="0.003"/>
+  <testcase name="getLengthAndWidth_rectangle()" classname="com.galvanize.geometry.GeometryTest" time="0.001"/>
+  <testcase name="changeLengthAndWidth_rectangle()" classname="com.galvanize.geometry.GeometryTest" time="0.004"/>
+  <testcase name="changeRadiusOfACircle()" classname="com.galvanize.geometry.GeometryTest" time="0.002"/>
+  <testcase name="getLengthAndWidth_returnOne_rectangle()" classname="com.galvanize.geometry.GeometryTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -120,5 +120,59 @@ public class GeometryTest {
         Shape circleShape = new Circle(4);
         assertEquals(Math.PI*Math.pow(4,2), circleShape.getArea());
     }
+    /**
+     * When I create a point (x,y)
+     * Then I can retrieve its x and y coordinates
+     */
+    @Test
+    public void createPoint(){
+        Point point = new Point(5, 3);
+        assertEquals(5, point.getXCoordinate());
+        assertEquals(3, point.getYCoordinate());
+    }
+    /**
+     * When I have a shape and a point
+     * Then I can set the shape’s center location to the point
+     */
+    @Test
+    public void placeShapeOnCartesianPlane(){
+        Shape rectangleShape = new Rectangle(5,6);
+        Point point = new Point(2,3);
+        CartesianPlane cartesianPlane = new CartesianPlane(rectangleShape, point);
+        cartesianPlane.setCenterLocation();
+        assertEquals(rectangleShape, cartesianPlane.getShape());
+        assertEquals(point, cartesianPlane.getPoint());
+
+        //Circle
+        Shape circleShape = new Circle(5);
+        Point point1 = new Point(2,3);
+        CartesianPlane cartesianPlane1 = new CartesianPlane(circleShape, point1);
+        cartesianPlane1.setCenterLocation();
+        assertEquals(circleShape, cartesianPlane1.getShape());
+        assertEquals(point1, cartesianPlane1.getPoint());
+
+    }
+
+    /**
+     * When I have a shape that’s been placed on my plane
+     * Then I can retrieve the point at which it is located
+     */
+    @Test
+    public void retrieveCenterLocationOfShape(){
+        Shape rectangleShape = new Rectangle(5,6);
+        Point point = new Point(2,3);
+        CartesianPlane cartesianPlane = new CartesianPlane(rectangleShape, point);
+        cartesianPlane.setCenterLocation();
+        assertEquals(2, cartesianPlane.retrieveLocation(rectangleShape).getXCoordinate());
+        assertEquals(3, cartesianPlane.retrieveLocation(rectangleShape).getYCoordinate());
+
+        //Circle
+        Shape circleShape = new Circle(5);
+        Point point1 = new Point(2,3);
+        CartesianPlane cartesianPlane1 = new CartesianPlane(circleShape, point1);
+        cartesianPlane1.setCenterLocation();
+        assertEquals(2, cartesianPlane1.retrieveLocation(circleShape).getXCoordinate());
+        assertEquals(3, cartesianPlane1.retrieveLocation(circleShape).getYCoordinate());
+    }
 
 }
