@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.galvanize.geometry.GeometryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-25T21:41:56" hostname="LAPTOP-S57OD5Q8" time="0.16">
+<testsuite name="com.galvanize.geometry.GeometryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-25T21:56:48" hostname="LAPTOP-S57OD5Q8" time="0.185">
   <properties/>
-  <testcase name="displayRepresentation()" classname="com.galvanize.geometry.GeometryTest" time="0.16"/>
+  <testcase name="displayRepresentation()" classname="com.galvanize.geometry.GeometryTest" time="0.185"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

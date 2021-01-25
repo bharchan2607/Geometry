@@ -38,5 +38,17 @@ public class Rectangle extends Shape {
         return this.length * this.width;
     }
 
+    @Override
+    public String display(boolean onPlane) {
+        if (getCenterLocation() != null) {
+            return "<" + this.getLength() + "> X <" + this.getWidth() + "> rectangle at (" +
+                    getCenterLocation().getXCoordinate() + "," +
+                    getCenterLocation().getYCoordinate()
+                    + ")";
+        } else {
+            return "<" + this.getLength() + "> X <" + this.getWidth() + "> rectangle";
+        }
+    }
+
 
 }

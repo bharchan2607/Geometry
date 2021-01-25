@@ -45,31 +45,10 @@ public class CartesianPlane {
                 + Math.pow(yCoordinateDiff,2));
     }
 
-
     public String display(Shape shape) {
         Point locationPoint = retrieveLocation(shape);
-        if(shape instanceof Rectangle) {
-            Rectangle rectangle = (Rectangle) shape;
-            if (locationPoint != null) {
-                return "<" + rectangle.getLength() + "> X <" + rectangle.getWidth() + "> rectangle at (" +
-                        locationPoint.getXCoordinate() + "," +
-                        locationPoint.getYCoordinate()
-                        + ")";
-            } else {
-                return "<" + rectangle.getLength() + "> X <" + rectangle.getWidth() + "> rectangle";
-            }
-        }else if(shape instanceof Circle) {
-            Circle circle = (Circle) shape;
-            if (locationPoint != null) {
-
-                return "circle of radius <" + circle.getRadius() + "> at (" +
-                        locationPoint.getXCoordinate() + "," +
-                        locationPoint.getYCoordinate()
-                        + ")";
-            } else {
-                return "circle of radius <" + circle.getRadius() + ">";
-            }
-        }
-        return null;
+        boolean onPlane = locationPoint != null? true:false;
+        return shape.display(true);
     }
+
 }

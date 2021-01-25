@@ -23,4 +23,6 @@ public abstract class Shape {
     public void setCenterLocation(Point centerLocation) {
         this.centerLocation = centerLocation;
     }
+
+    public abstract String display(boolean onPlane);
 }
