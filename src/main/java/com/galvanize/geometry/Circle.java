@@ -1,6 +1,6 @@
 package com.galvanize.geometry;
 
-public class Circle {
+public class Circle extends Shape {
     private int radius;
 
     public Circle(int radius){
@@ -18,4 +18,16 @@ public class Circle {
     public void setRadius(int radius) {
         this.radius = radius;
     }
+
+    @Override
+    public double getPerimeter() {
+        return 2 * Math.PI * this.radius;
+    }
+
+    @Override
+    public double getArea() {
+        return Math.PI * Math.pow(this.radius,2);
+    }
+
+
 }

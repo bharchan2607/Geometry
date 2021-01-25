@@ -2,6 +2,7 @@ package com.galvanize.geometry;
 
 import org.junit.jupiter.api.Test;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -79,5 +80,45 @@ public class GeometryTest {
         assertEquals(8, circle.getRadius());
     }
 
+    /**
+     * When I set the color of any shape
+     * Then I can retrieve the color of that shape
+     *
+     * When I have not set the color of a shape
+     * Then the color I retrieve is “Burnt Umber"
+     */
+    @Test
+    public void getColorOfShape(){
+        Shape shape = new Rectangle();
+        shape.setColor("Yellow");
+        assertEquals("Yellow", shape.getColor());
+        Shape circleShape = new Circle();
+        assertEquals("Burnt Umber", circleShape.getColor());
+
+    }
+
+    /**
+     * When I have a shape
+     * Then I can retrieve its perimeter
+     */
+    @Test
+    public void getPerimeterOfShape(){
+        Shape shape = new Rectangle(5,6);
+        assertEquals(2 * (5+6),shape.getPerimeter());
+        Shape circleShape = new Circle(4);
+        assertEquals(2*Math.PI*4, circleShape.getPerimeter());
+    }
+
+    /**
+     * When I have a shape
+     * Then I can retrieve its area
+     */
+    @Test
+    public void getAreaOfShape(){
+        Shape shape = new Rectangle(5,6);
+        assertEquals(30, shape.getArea());
+        Shape circleShape = new Circle(4);
+        assertEquals(Math.PI*Math.pow(4,2), circleShape.getArea());
+    }
 
 }

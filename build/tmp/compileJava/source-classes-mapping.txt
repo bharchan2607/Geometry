@@ -1,4 +1,6 @@
 com/galvanize/geometry/Rectangle.java
  com.galvanize.geometry.Rectangle
+com/galvanize/geometry/Shape.java
+ com.galvanize.geometry.Shape
 com/galvanize/geometry/Circle.java
  com.galvanize.geometry.Circle

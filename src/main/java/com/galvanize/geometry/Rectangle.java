@@ -1,6 +1,6 @@
 package com.galvanize.geometry;
 
-public class Rectangle {
+public class Rectangle extends Shape {
     private int length;
     private int width;
 
@@ -29,4 +29,13 @@ public class Rectangle {
     public void setWidth(int width) {
         this.width = width;
     }
+
+    public double getPerimeter(){
+        return 2 * (this.length+this.width);
+    }
+
+    public double getArea(){
+        return this.length * this.width;
+    }
+
 }
