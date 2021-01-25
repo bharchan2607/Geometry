@@ -1,0 +1,2 @@
+com/galvanize/geometry/Rectangle.java
+ com.galvanize.geometry.Rectangle

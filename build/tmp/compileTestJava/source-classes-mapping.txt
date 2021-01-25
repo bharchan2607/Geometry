@@ -1,0 +1,2 @@
+com/galvanize/geometry/GeometryTest.java
+ com.galvanize.geometry.GeometryTest
