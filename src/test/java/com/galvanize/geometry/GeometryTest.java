@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class GeometryTest {
@@ -138,18 +139,20 @@ public class GeometryTest {
     public void placeShapeOnCartesianPlane(){
         Shape rectangleShape = new Rectangle(5,6);
         Point point = new Point(2,3);
-        CartesianPlane cartesianPlane = new CartesianPlane(rectangleShape, point);
-        cartesianPlane.setCenterLocation();
-        assertEquals(rectangleShape, cartesianPlane.getShape());
-        assertEquals(point, cartesianPlane.getPoint());
+        CartesianPlane cartesianPlane = new CartesianPlane();
+        cartesianPlane.addShapesOnPlane(rectangleShape, point);
+
+        assertTrue(cartesianPlane.getShapeList().contains(rectangleShape));
+        assertEquals(point,cartesianPlane.getShapeList().get(0).getCenterLocation());
+
 
         //Circle
         Shape circleShape = new Circle(5);
         Point point1 = new Point(2,3);
-        CartesianPlane cartesianPlane1 = new CartesianPlane(circleShape, point1);
-        cartesianPlane1.setCenterLocation();
-        assertEquals(circleShape, cartesianPlane1.getShape());
-        assertEquals(point1, cartesianPlane1.getPoint());
+        cartesianPlane.addShapesOnPlane(circleShape, point1);
+
+        assertTrue(cartesianPlane.getShapeList().contains(circleShape));
+        assertEquals(point1,cartesianPlane.getShapeList().get(1).getCenterLocation());
 
     }
 
@@ -161,18 +164,106 @@ public class GeometryTest {
     public void retrieveCenterLocationOfShape(){
         Shape rectangleShape = new Rectangle(5,6);
         Point point = new Point(2,3);
-        CartesianPlane cartesianPlane = new CartesianPlane(rectangleShape, point);
-        cartesianPlane.setCenterLocation();
+        CartesianPlane cartesianPlane = new CartesianPlane();
+        cartesianPlane.addShapesOnPlane(rectangleShape, point);
+
         assertEquals(2, cartesianPlane.retrieveLocation(rectangleShape).getXCoordinate());
         assertEquals(3, cartesianPlane.retrieveLocation(rectangleShape).getYCoordinate());
 
         //Circle
         Shape circleShape = new Circle(5);
         Point point1 = new Point(2,3);
-        CartesianPlane cartesianPlane1 = new CartesianPlane(circleShape, point1);
-        cartesianPlane1.setCenterLocation();
+        CartesianPlane cartesianPlane1 = new CartesianPlane();
+        cartesianPlane1.addShapesOnPlane(circleShape, point1);
         assertEquals(2, cartesianPlane1.retrieveLocation(circleShape).getXCoordinate());
         assertEquals(3, cartesianPlane1.retrieveLocation(circleShape).getYCoordinate());
+    }
+
+    /**
+     * When I have a shape that’s not been placed on my plane
+     * Then attempting to retrieve its location informs me that the shape is not on the plane
+     */
+    @Test
+    public void retrieveCenterLocationOfShapeNotOnPlane() {
+        Shape rectangleShape = new Rectangle(5, 6);
+        Point point = new Point(2, 3);
+        CartesianPlane cartesianPlane = new CartesianPlane();
+        cartesianPlane.addShapesOnPlane(rectangleShape, point);
+        Shape circleShape = new Circle(5);
+        assertEquals(point, cartesianPlane.retrieveLocation(rectangleShape));
+        assertEquals(null, cartesianPlane.retrieveLocation(circleShape));
+
+    }
+
+    /**
+     * When I have a point
+     * Then if I give that point an (x, y) offset
+     * Then the point changes to the sum of its coordinates and those I’ve provided
+     */
+    @Test
+    public void moveAnyShapeOnPlane(){
+        Shape rectangleShape = new Rectangle(5, 6);
+        Point point = new Point(2, 3);
+        Shape circleShape = new Circle(5);
+        Point point1 = new Point(6, 8);
+        CartesianPlane cartesianPlane = new CartesianPlane();
+        cartesianPlane.addShapesOnPlane(rectangleShape, point);
+        cartesianPlane.addShapesOnPlane(circleShape, point1);
+        Point point2 = new Point(2, 2);
+        cartesianPlane.move(rectangleShape, point2);
+        assertEquals(4, cartesianPlane.getShapeList().get(0).getCenterLocation().getXCoordinate());
+        assertEquals(5, cartesianPlane.getShapeList().get(0).getCenterLocation().getYCoordinate());
+
+    }
+    /**
+     * If I have two shapes on my plane
+     * Then I can find the absolute linear distance between their centers
+     */
+    @Test
+    public void distanceBetweenTwoShapes(){
+        Shape rectangleShape = new Rectangle(5, 6);
+        Point point = new Point(2, 3);
+        Shape circleShape = new Circle(5);
+        Point point1 = new Point(6, 8);
+        CartesianPlane cartesianPlane = new CartesianPlane();
+        cartesianPlane.addShapesOnPlane(rectangleShape, point);
+        cartesianPlane.addShapesOnPlane(circleShape, point1);
+
+        assertEquals(6.4031242374328485,cartesianPlane.distance(rectangleShape, circleShape));
+
+    }
+
+    /**
+     * If I have a rectangle on my plane
+     * Then I should see “<length> X <width> rectangle at (x,y)"
+     *
+     * If I have a rectangle not on my plane
+     * Then I should see “<length> X <width> rectangle"
+     *
+     * If I have a circle on my plane
+     * Then I should see “circle of radius <radius> at (x,y)"
+     *
+     * If I have a rectangle not on my plane
+     * Then I should see “circle of radius <radius>"
+     *
+     * If I have any items on my plane
+     * Then I should be able to see a representation of all of them
+     */
+    @Test
+    public void displayRepresentation(){
+        Shape rectangleShape = new Rectangle(5, 6);
+        Point point = new Point(2, 3);
+        Shape circleShape = new Circle(5);
+        Point point1 = new Point(6, 8);
+        CartesianPlane cartesianPlane = new CartesianPlane();
+        cartesianPlane.addShapesOnPlane(rectangleShape, point);
+        cartesianPlane.addShapesOnPlane(circleShape, point1);
+
+        Shape rectangleShapeNotOnPlane = new Rectangle(8, 5);
+        Shape circleShapeNotOnPlane = new Circle(8);
+        assertEquals("<5> X <6> rectangle at (2.0,3.0)",cartesianPlane.display(rectangleShape));
+        assertEquals("<8> X <5> rectangle",cartesianPlane.display(rectangleShapeNotOnPlane));
+        assertEquals("circle of radius <5> at (6.0,8.0)",cartesianPlane.display(circleShape));
     }
 
 }
