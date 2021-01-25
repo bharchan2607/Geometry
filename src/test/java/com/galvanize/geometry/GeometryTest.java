@@ -41,8 +41,43 @@ public class GeometryTest {
         Rectangle rectangle = new Rectangle(3,5);
         assertEquals(3, rectangle.getLength());
         assertEquals(5, rectangle.getWidth());
-        rectangle.changeLengthAndWidth(5,7);
+        rectangle.setLength(5);
         assertEquals(5, rectangle.getLength());
+        rectangle.setWidth(7);
         assertEquals(7, rectangle.getWidth());
     }
+
+    /**
+     * When I create a circle with a radius
+     * Then I can retrieve the radius from the circle
+     */
+    @Test
+    public void createCirleWithRadius(){
+        Circle circle = new Circle(10);
+        assertEquals(10, circle.getRadius());
+    }
+
+    /**
+     * When I create a circle without a radius
+     * Then the radius I retrieve is 1
+     */
+    @Test
+    public void createCirleWithoutRadius(){
+        Circle circle = new Circle();
+        assertEquals(1, circle.getRadius());
+    }
+
+    /**
+     * When I change the radius of a circle
+     * Then the radius I retrieve is the new radius
+     */
+    @Test
+    public void changeRadiusOfACircle(){
+        Circle circle = new Circle(6);
+        assertEquals(6, circle.getRadius());
+        circle.setRadius(8);
+        assertEquals(8, circle.getRadius());
+    }
+
+
 }
